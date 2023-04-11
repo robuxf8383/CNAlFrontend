@@ -151,8 +151,8 @@ header nav ul li a:hover{
     z-index: -1;
     transition:all 0.25s ease-out;
 }
-.ben-10{
-    background: linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.6)),url('https://assets.digicorus.corusdigitaldev.com/wp-content/uploads/sites/19/2018/06/04133345/CartoonNetwork_Ben10_462x386.jpg') center/cover no-repeat;
+.telebingo{
+    background: linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.6)),url('https://nepune.com/web-modules/uploads/job-manager-uploads/company_logo/2022/09/telebingo.jpg') center/cover no-repeat;
 }
 .heroes{
     background:linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(0, 0, 0, 0.6)), url('https://assets.digicorus.corusdigitaldev.com/wp-content/uploads/sites/19/2018/05/29200714/CartoonNetwork_OKKO_462x386.jpg') center/cover no-repeat;
