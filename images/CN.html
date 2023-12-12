@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html lang="en"><div id="_intercepter_" url="blob:https://files.mediacircuit.dev/5388104a-542c-4589-b748-dddb95023418" mimetype="video/mp4; codecs=&quot;avc1.640029, mp4a.40.2&quot;" mediasourceid="7918865815" bufferid="4033968055" timestamp="1699984193886"></div><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://files.mediacircuit.dev/utilstv/favicon.ico">
+
+  <title>Eitstream Streaming</title>
+
+  <link href="./Eitstream Streaming_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="./Eitstream Streaming_files/bootstrap.bundle.min.js.download" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><script>(()=>{const transposer=document.querySelector("#_intercepter_");if(!transposer)return;const transpose=params=>{for(const key in params)transposer.setAttribute(key,params[key]);transposer.click()},now=()=>(new Date).getTime(),mediasource=MediaSource;MediaSource=class extends mediasource{constructor(){super(arguments),this._mediaSourceId=Math.floor(1e10*Math.random())}addSourceBuffer(mimeType){const sourceBuffer=super.addSourceBuffer.apply(this,arguments),appendBuffer=sourceBuffer.appendBuffer;sourceBuffer._bufferId=Math.floor(1e10*Math.random());const _self=this;return sourceBuffer.appendBuffer=function(buffer){if(buffer.length||buffer.byteLength){const a=new Blob([buffer]),url=URL.createObjectURL(a);transpose({url:url,mimeType:mimeType,mediaSourceId:_self._mediaSourceId,bufferId:this._bufferId,timestamp:now()}),setTimeout((()=>{URL.revokeObjectURL(url)}),6e4)}appendBuffer.apply(this,arguments)},sourceBuffer.addEventListener("abort",(()=>{transpose({url:"abort",mimeType:"",mediaSourceId:_self._mediaSourceId,bufferId:this._bufferId,timestamp:now()})})),sourceBuffer}}})();</script>
+  <!-- <link href="font/style.css" rel="stylesheet"> -->
+
+  <style>
+    body {
+      padding-top: 0px;
+    }
+
+    .starter-template {
+      padding: 0px 15px;
+      text-align: center;
+    }
+
+    #player {
+      width: 75%;
+      aspect-ratio: calc(16/9);
+      background-color: black;
+    }
+
+    .form-control {
+        width: 20.3em;
+    }
+  </style>
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->     
+</head>
+
+<body data-bs-theme="dark">
+  <div class="container text-center">
+    <section id="st-template" class="starter-template">
+      <h1>CN Albania Streaming</h1>
+      <p id="airtime"></p>
+      <div id="ctnr">
+        <video id="player" controls="" poster="https://streaming.eitstream.it/api/v1/GetImage?token=b22748b8-00bb-11ea-bb9c-7b5b3a4aa5ca&amp;session=f7d8c563-2768-463a-8cbf-26ee92d9652a" webkit-playsinline="" playsinline="" autoplay="" src="blob:https://files.mediacircuit.dev/be80ae2b-1d26-40ed-b2f7-d9751828eac0"></video>
+      </div>
+
+      <form id="load-url">
+        <div class="row g-3 align-items-center justify-content-md-center">
+          <div class="col-auto">
+            <label class="form-label">Session:</label>
+          </div>
+          <div class="col-auto">
+            <input class="form-control" id="ses" type="text" placeholder="00000000-0000-0000-0000-000000000000" required="">
+          </div>
+        </div>      
+        <div class="row g-3 align-items-center justify-content-md-center">
+            <div class="col-auto">
+              <label class="form-label">Token:</label>
+            </div>
+            <div class="col-auto">
+              <input class="form-control" id="tkn" type="text" placeholder="00000000-0000-0000-0000-000000000000" required="">
+            </div>
+          </div>
+        <button type="submit" class="btn btn-outline-info ">Load</button>
+      </form>
+    </section>
+
+  </div>
+  <!-- /.container -->
+
+  <script src="./Eitstream Streaming_files/adapter.js.download"></script>
+  <script src="./Eitstream Streaming_files/platform.js.download"></script>
+  <script src="./Eitstream Streaming_files/h5splayer.js.download"></script>
+  <script src="./Eitstream Streaming_files/h5splayerhelper.js.download"></script>
+
+  <script src="./Eitstream Streaming_files/jquery.min.js.download"></script>
+  <script src="./Eitstream Streaming_files/bootstrap.min.js.download"></script>
+  <script>
+    window.player = null;
+    function initializePlayer(player) {
+      var airtimeLabel = document.getElementById('airtime');
+      airtimeLabel.innerHTML = '';
+
+      var h5shost = 'streaming.eitstream.it';
+
+      // hook up the video switcher
+      var loadUrl = document.getElementById('load-url');
+      loadUrl.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        var session = document.getElementById('ses').value.trim();
+        var token = document.getElementById('tkn').value.trim();
+
+        var source = {
+            videoid: 'player',
+            protocol: 'https:',
+            host: h5shost,
+            rootpath: '/',
+            token,
+            session,
+            hlsver: 'v1', // todo make this pickable
+        };
+
+        if(player != null){
+            console.log('Player is not null. Disconnecting')
+            player.disconnect();
+            delete player;
+            player = null;
+        }
+
+        player = new H5sPlayerWS(source);
+        player.connect();
+
+        return false;
+      });
+    }
+
+    initializePlayer(player);
+  </script>
+  
+
+
+
+</body></html>
