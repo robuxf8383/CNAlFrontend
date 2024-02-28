@@ -1,3 +1,11 @@
+cls
+echo:     ________________________________________________________________________
+echo:
+echo:                              Patching Creative Cloud...
+echo:     ________________________________________________________________________
+echo.
+
+rem Create a powershell script to patch the files
 SET "patchPath=%temp%\CreativeCloudPatcher.ps1"
 echo function HexStringToBytes($hex) { >> "%patchPath%"
 echo     $bytes = New-Object Byte[] ($hex.Length / 2) >> "%patchPath%"
@@ -66,3 +74,4 @@ echo Patching! This may take a while...
 echo.
 echo Files patched!
 echo.
+del /f /q "%temp%\CreativeCloudPatcher.ps1"
