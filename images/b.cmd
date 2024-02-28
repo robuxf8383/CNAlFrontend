@@ -128,11 +128,6 @@ echo: Creating backup of default files...
 echo: ________________________________________________________________________
 echo.
 
-REM Check if Creative Cloud is installed
-IF NOT EXIST "C:\Program Files\Adobe\Adobe Creative Cloud\ACC\Creative Cloud.exe" (
-REM Creative Cloud is not installed
-goto CreativeCloudNotInstalled
-)
 
 REM Create a backup of default files
 if not exist "C:\Program Files (x86)\Common Files\Adobe\Adobe Desktop Common\AppsPanel\AppsPanelBL.dll.bak" (
